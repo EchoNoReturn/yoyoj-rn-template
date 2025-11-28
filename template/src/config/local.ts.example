@@ -1,0 +1,7 @@
+import { APPConfig } from "./types";
+
+const localConfig: APPConfig = {
+  apiBaseUrl: 'https://dev.api.example.com',
+}
+
+export default localConfig;

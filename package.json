@@ -1,0 +1,19 @@
+{
+  "name": "yoyoj-rn-template",
+  "version": "1.0.0",
+  "main": "cli/init.js",
+  "scripts": {
+    "run": "node cli/init.js"
+  },
+  "bin": {
+    "yoyoj-rn": "cli/init.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "commander": "^14.0.2"
+  },
+  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
+}

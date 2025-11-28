@@ -1,0 +1,7 @@
+{
+  "translation": {
+    "welcome": "Welcome to MyApp",
+    "startup_screen": "Startup Screen",
+    "say_hello": "Hello, {{name}}!"
+  }
+}

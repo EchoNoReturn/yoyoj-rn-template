@@ -1,0 +1,7 @@
+{
+  "translation": {
+    "welcome": "欢迎使用 MyApp",
+    "startup_screen": "启动屏幕",
+    "say_hello": "你好, {{name}}!"
+  }
+}

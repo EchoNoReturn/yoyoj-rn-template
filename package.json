@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "cli/init.js",
   "scripts": {
-    "run": "node cli/init.js"
+    "test": "node cli/init.js"
   },
   "bin": {
     "yoyoj-rn": "cli/init.js"

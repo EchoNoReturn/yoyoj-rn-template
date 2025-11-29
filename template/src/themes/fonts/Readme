@@ -1,0 +1,5 @@
+1、在此处放入字体文件
+2、在 fonts.ts 中更新 family 字段，将 ‘System’ 替换为新字体名称（不带后缀）
+3、执行 npx react-native-asset
+or 3*. 手动在 Xcode(iOS) 和 Android Studio 中添加字体文件。
+4、重新编译应用程序 yarn ios / yarn android

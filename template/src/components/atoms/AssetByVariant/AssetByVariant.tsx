@@ -4,27 +4,44 @@ import type { ImageProps, ImageSourcePropType } from 'react-native';
 
 import * as z from 'zod';
 import getAssetsContext from '@/themes/assests/getAssetsContext';
+import { useTheme } from '@/themes';
 
 const images = getAssetsContext('images');
+const SIZE = 24;
 
 type Properties = {
   readonly extension?: string;
   readonly path: string;
+  readonly width?: number;
+  readonly height?: number;
 } & Omit<ImageProps, 'source'>;
 
-function AssetByVariant({ extension = 'png', path, ...props }: Properties) {
+function AssetByVariant({
+  extension = 'png',
+  path,
+  width = SIZE,
+  height = SIZE,
+  style,
+  ...props
+}: Properties) {
+  const { isDark } = useTheme();
+
   const image = useMemo(() => {
     try {
-      return z
-        .custom<ImageSourcePropType>()
-        .parse(images(`./${path}.${extension}`));
+      const fixPath = isDark
+        ? `./dark/${path}.${extension}`
+        : `./${path}.${extension}`;
+
+      return z.custom<ImageSourcePropType>().parse(images(fixPath));
     } catch (error) {
       console.warn(`Asset not found: ${path}.${extension}. Error: ${error}`);
       return undefined;
     }
-  }, [path, extension]);
+  }, [isDark, path, extension]);
 
-  return image ? <Image source={image} {...props} /> : null;
+  return image ? (
+    <Image resizeMode="contain" source={image} style={[{ width, height }, style]} {...props} />
+  ) : null;
 }
 
 export default AssetByVariant;

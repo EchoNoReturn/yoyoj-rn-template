@@ -17,13 +17,12 @@ function IconByVariant({ height = SIZE, width = SIZE, path, ...props }: Properti
 
   const Icon = useMemo(() => {
     try {
-      const getDefaultSource = () =>
-        z
+      
+      return z
           .object({
             default: z.custom<React.FC<SvgProps>>(() => z.custom<ReactElement<SvgProps>>()),
           })
           .parse(icons(`./${path}.${EXTENSION}`)).default;
-      return getDefaultSource()
     } catch (error) {
       console.warn(`Icon not found: ${path}.${EXTENSION}. Error: ${error}`)
       return null

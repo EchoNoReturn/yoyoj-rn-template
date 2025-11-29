@@ -44,10 +44,8 @@ program
         JSON.stringify(packageJson, null, 2),
         "utf-8"
       );
-      const appJsonPath = path.join(targetDir, "app.json");
-      const appJson = JSON.parse(fs.readFileSync(appJsonPath, "utf-8"));
-      appJson.name = appJson.displayName = projectName;
-      fs.writeFileSync(appJsonPath, JSON.stringify(appJson, null, 2), "utf-8");
+      // Remove default and App.tsx
+      fs.unlinkSync(path.join(targetDir, "App.tsx"));
       // 4. Install dependencies, use yarn
       execSync("corepack enable yarn", { stdio: "inherit" });
       execSync("corepack prepare yarn@stable --activate", { stdio: "inherit" });

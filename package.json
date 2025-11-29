@@ -8,10 +8,29 @@
   "bin": {
     "yoyoj-rn": "cli/init.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "keywords": [
+    "react-native",
+    "template",
+    "typescript",
+    "react-navigation",
+    "i18n",
+    "theme"
+  ],
+  "author": "yoyojcoder@qq.com",
+  "license": "MIT",
+  "description": "A React Native template with TypeScript, Navigation, i18n, and Theme support.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EchoNoReturn/yoyoj-rn-template.git"
+  },
+  "bugs": {
+    "url": "https://github.com/EchoNoReturn/yoyoj-rn-template/issues"
+  },
+  "homepage": "https://github.com/EchoNoReturn/yoyoj-rn-template",
+  "files": [
+    "cli",
+    "template"
+  ],
   "dependencies": {
     "commander": "^14.0.2"
   },

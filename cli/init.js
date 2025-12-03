@@ -47,7 +47,13 @@ program
       // update tsconfig.json
       const tsconfigPath = path.join(targetDir, "tsconfig.json");
       const tsconfig = JSON.parse(fs.readFileSync(tsconfigPath, "utf-8"));
-      tsconfig.compilerOptions.paths["@/*"] = ["./src/*"];
+      tsconfig.compilerOptions = {
+        ...(tsconfig.compilerOptions || {}),
+        baseUrl: '.',
+        paths: {
+          "@/*": ["./src/*"]
+        },
+      }
       fs.writeFileSync(
         tsconfigPath,
         JSON.stringify(tsconfig, null, 2),

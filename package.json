@@ -1,5 +1,5 @@
 {
-  "name": "yoyoj-rn-template",
+  "name": "yoyoj-rn",
   "version": "1.0.0",
   "main": "cli/init.js",
   "scripts": {
@@ -29,7 +29,8 @@
   "homepage": "https://github.com/EchoNoReturn/yoyoj-rn-template",
   "files": [
     "cli",
-    "template"
+    "template",
+    "README_zh-CN.md"
   ],
   "dependencies": {
     "commander": "^14.0.2"

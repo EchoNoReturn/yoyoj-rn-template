@@ -44,6 +44,15 @@ program
         JSON.stringify(packageJson, null, 2),
         "utf-8"
       );
+      // update tsconfig.json
+      const tsconfigPath = path.join(targetDir, "tsconfig.json");
+      const tsconfig = JSON.parse(fs.readFileSync(tsconfigPath, "utf-8"));
+      tsconfig.compilerOptions.paths["@/*"] = ["./src/*"];
+      fs.writeFileSync(
+        tsconfigPath,
+        JSON.stringify(tsconfig, null, 2),
+        "utf-8"
+      );
       // Remove default and App.tsx
       fs.unlinkSync(path.join(targetDir, "App.tsx"));
       // 4. Install dependencies, use yarn

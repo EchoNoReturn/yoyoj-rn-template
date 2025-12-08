@@ -39,6 +39,14 @@ program
       const packageJsonPath = path.join(targetDir, "package.json");
       const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf-8"));
       packageJson.name = projectName;
+      packageJson.codegenConfig = {
+        name: `${projectName}Spec`,
+        type: "all",
+        jsSrcsDir: "spec",
+        android: {
+          javaPackageName: `com.${projectName}.spec`,
+        },
+      };
       fs.writeFileSync(
         packageJsonPath,
         JSON.stringify(packageJson, null, 2),
@@ -49,11 +57,11 @@ program
       const tsconfig = JSON.parse(fs.readFileSync(tsconfigPath, "utf-8"));
       tsconfig.compilerOptions = {
         ...(tsconfig.compilerOptions || {}),
-        baseUrl: '.',
+        baseUrl: ".",
         paths: {
-          "@/*": ["./src/*"]
+          "@/*": ["./src/*"],
         },
-      }
+      };
       fs.writeFileSync(
         tsconfigPath,
         JSON.stringify(tsconfig, null, 2),

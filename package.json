@@ -1,6 +1,6 @@
 {
   "name": "yoyoj-rn",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "cli/init.js",
   "scripts": {
     "test": "node cli/init.js"

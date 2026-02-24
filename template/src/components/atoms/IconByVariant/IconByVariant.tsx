@@ -1,8 +1,6 @@
 import getAssetsContext from '@/themes/assests/getAssetsContext'
-import { ReactElement, useMemo } from 'react'
+import { useMemo } from 'react'
 import { SvgProps } from 'react-native-svg'
-
-import * as z from 'zod'
 
 type Properties = {
   readonly path: string
@@ -17,12 +15,7 @@ function IconByVariant({ height = SIZE, width = SIZE, path, ...props }: Properti
 
   const Icon = useMemo(() => {
     try {
-      
-      return z
-          .object({
-            default: z.custom<React.FC<SvgProps>>(() => z.custom<ReactElement<SvgProps>>()),
-          })
-          .parse(icons(`./${path}.${EXTENSION}`)).default;
+      return icons(`./${path}.${EXTENSION}`)
     } catch (error) {
       console.warn(`Icon not found: ${path}.${EXTENSION}. Error: ${error}`)
       return null

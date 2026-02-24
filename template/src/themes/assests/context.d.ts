@@ -8,11 +8,10 @@
 declare let module: NodeJS.NodeModule;
 
 declare namespace __MetroModuleApi {
-  type RequireContext = {
+  type RequireContext<T = unknown> = {
     /** Return the keys that can be resolved. */
     keys(): string[];
-    (id: string): unknown;
-    (id: string): unknown;
+    (id: string): T;
     /** **Unimplemented:** Readable identifier for the context module. */
     id: string;
     /** **Unimplemented:** Return the module identifier for a user request. */
@@ -23,7 +22,6 @@ declare namespace __MetroModuleApi {
     /**
      * Returns the exports from a dependency. The call is sync. No request to the server is fired. The compiler ensures that the dependency is available.
      */
-    (path: string): unknown;
     (path: string): unknown;
 
     /**
@@ -36,12 +34,12 @@ declare namespace __MetroModuleApi {
      * @param filter Filename filter pattern for use in `require.context`. Optional, default `.*` (any file) when `require.context` is used.
      * @param mode Mode for resolving dynamic dependencies. Defaults to `sync`.
      */
-    context(
+    context<T = unknown>(
       path: string,
       recursive?: boolean,
       filter?: RegExp,
       mode?: 'eager' | 'lazy-once' | 'lazy' | 'sync' | 'weak',
-    ): RequireContext;
+    ): RequireContext<T>;
   };
 }
 

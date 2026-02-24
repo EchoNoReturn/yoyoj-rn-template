@@ -1,8 +1,7 @@
 import { useMemo } from 'react';
 import { Image } from 'react-native';
-import type { ImageProps, ImageSourcePropType } from 'react-native';
+import type { ImageProps } from 'react-native';
 
-import * as z from 'zod';
 import getAssetsContext from '@/themes/assests/getAssetsContext';
 import { useTheme } from '@/themes';
 
@@ -32,7 +31,7 @@ function AssetByVariant({
         ? `./dark/${path}.${extension}`
         : `./${path}.${extension}`;
 
-      return z.custom<ImageSourcePropType>().parse(images(fixPath));
+      return images(fixPath);
     } catch (error) {
       console.warn(`Asset not found: ${path}.${extension}. Error: ${error}`);
       return undefined;
